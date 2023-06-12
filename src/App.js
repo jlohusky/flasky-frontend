@@ -1,24 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Animal from './components/Animal';
+
 function App() {
+  // comments outside the JSX (but still in JavaScript)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section>
+      <h1>The Sappire Animal Adoption Agency</h1>
+      <h2>Animal Listings</h2>
+      {/* I want to list a bunch of animals... */}
+      {/* Each animals has its name and photo */}
+      <Animal></Animal>
+    </section>
   );
 }
 
