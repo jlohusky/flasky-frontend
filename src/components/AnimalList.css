@@ -1,3 +1,7 @@
 .AnimalList {
-    color: blue
+    color: blue;
+}
+
+.AnimalList li {
+    list-style-type: none;
 }
