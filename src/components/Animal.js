@@ -35,8 +35,16 @@ const Animal = (props) => {
         setIsBookedmarked(!isBookmarked);
     }
 
+    // If the animal is bookmarked, the CSS class name should be
+    // .bookmarked
+    // If the animal is not bookmarked, there should be no CSS class
+    let animalStyle = 'Animal';
+    if (isBookmarked) {
+        animalStyle = 'Animal bookmarked';
+    }
+
     return (
-        <section className="Animal">
+        <section className={animalStyle}>
             <h3>Animal name: {props.name}</h3>
             <p> Species: {props.species ? props.species : 'Unknown'}</p>
             { props.photo ? <img src={ props.photo } alt={altText}></img> : "[No Photo]" }
