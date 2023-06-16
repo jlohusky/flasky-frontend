@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import Animal from './Animal';
 
-const AnimalList = ({ listOfAnimals }) => { 
+const AnimalList = (props) => { 
     // If the parameter is props instead, you can do these!
-    // const listOfAnimals = props.listOfAnimals;
+    const listOfAnimals = props.listOfAnimals;
     // const { listOfAnimals } = props;
 
     // const renderedAnimals = [];
@@ -31,6 +31,7 @@ const AnimalList = ({ listOfAnimals }) => {
                             name={creature.name} 
                             species={creature.species}
                             photo={creature.photo}
+                            updateBookmark={props.updateBookmark}
                             ></Animal>
                         </li>
                     ))
@@ -48,9 +49,10 @@ AnimalList.propTypes = {
             species: PropTypes.string,
             adopted: PropTypes.bool,
             age: PropTypes.number,
-            photo: PropTypes.string
+            photo: PropTypes.string,
         })
-    )
+    ),
+    updateBookmark: PropTypes.func
 }
 
 export default AnimalList;
