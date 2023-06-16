@@ -1,9 +1,11 @@
 import './App.css';
+import { useState } from 'react';
+
 
 import Animal from './components/Animal';
 import AnimalList from './components/AnimalList';
 
-const listOfAnimals = [
+const INITIAL_ANIMALS = [
   {
     id: 100,
     name: "Violet",
@@ -22,16 +24,41 @@ const listOfAnimals = [
   },
   {
     id: 103,
-    name: "Sabine"
+    name: "Sabine",
+    species: "Dog",
+  },
+  {
+    id: 104,
+    name: "Paprika and Braven",
+    species: "Kittens",
+    photo: "https://www.felinefriendsofsammamish.com/app/pet/img/000359-008.jpg"
   }
 ];
 
 function App() {
-  // comments outside the JSX (but still in JavaScript)
+  const [animals, setAnimals] = useState(INITIAL_ANIMALS);
+
+  const updateBookmark = (animalId, bookmarkBoolean) => {
+    // iterate though animals & add bookmark: False
+    const updatedAnimals = animals.map(animal => {
+      if (animal.id === animalId) {
+        return {...animal, bookmark: bookmarkBoolean};
+      } else {
+        return {...animal}
+      }
+    })
+
+    setAnimals(updatedAnimals);
+
+  }
+
   return (
     <section>
       <h1>The Sappire Animal Adoption Agency</h1>
-      <AnimalList listOfAnimals={ listOfAnimals }></AnimalList>
+      <AnimalList 
+      listOfAnimals={ animals } 
+      updateBookmark={updateBookmark}
+      ></AnimalList>
     </section>
   );
 }
