@@ -32,7 +32,11 @@ const Animal = (props) => {
     // Event Handler
     // Update the state
     const toggleBookmark = () => {
+        // We want event handler function to do two things:
+            // update component's internal state
+            // update that information to SSOT
         setIsBookedmarked(!isBookmarked);
+        props.updateBookmark();
     }
 
     // If the animal is bookmarked, the CSS class name should be
@@ -60,7 +64,8 @@ Animal.propTypes = {
     species: PropTypes.string,
     adopted: PropTypes.bool,
     age: PropTypes.number,
-    photo: PropTypes.string
+    photo: PropTypes.string,
+    updateBookmark: PropTypes.func
 };
 
 export default Animal;
