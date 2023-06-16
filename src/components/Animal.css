@@ -6,3 +6,8 @@
     background: darkblue;
     color: white;
 }
+
+.Animal img {
+    height: 500px;
+    max-width: 100%;
+}
