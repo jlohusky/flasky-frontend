@@ -24,7 +24,7 @@ import { useState } from 'react';
 // - photo (optional?) -- or a default photo
 const Animal = (props) => {
 
-    const [isBookmarked, setIsBookedmarked] = useState(false);
+    // const [isBookmarked, setIsBookmarked] = useState(props.isBookmarked);
 
     const altText = `Photo of ${props.name}`
 
@@ -35,15 +35,20 @@ const Animal = (props) => {
         // We want event handler function to do two things:
             // update component's internal state
             // update that information to SSOT
-        setIsBookedmarked(!isBookmarked);
-        props.updateBookmark();
+        // setIsBookmarked(!isBookmarked);
+        console.log(props.isBookmarked);
+        props.updateBookmark(props.id);
+    }
+
+    const toggleDelete = () => {
+        props.updateDelete(props.id);
     }
 
     // If the animal is bookmarked, the CSS class name should be
     // .bookmarked
     // If the animal is not bookmarked, there should be no CSS class
     let animalStyle = 'Animal';
-    if (isBookmarked) {
+    if (props.isBookmarked) {
         animalStyle = 'Animal bookmarked';
     }
 
@@ -54,7 +59,8 @@ const Animal = (props) => {
             { props.photo ? <img src={ props.photo } alt={altText}></img> : "[No Photo]" }
             <br></br>
             <button onClick={toggleBookmark}>Bookmark</button>
-            <p>Is bookmarked? {isBookmarked ? "True" : "False"}</p>
+            <p>Is bookmarked? {props.isBookmarked ? "True" : "False"}</p>
+            <button onClick={toggleDelete} className="delete-button">🐶 Delete</button>
         </section>
     );
 };
@@ -65,7 +71,9 @@ Animal.propTypes = {
     adopted: PropTypes.bool,
     age: PropTypes.number,
     photo: PropTypes.string,
-    updateBookmark: PropTypes.func
+    isBookmarked: PropTypes.bool,
+    updateBookmark: PropTypes.func,
+    updateDelete: PropTypes.func
 };
 
 export default Animal;
