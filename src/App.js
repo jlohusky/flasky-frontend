@@ -48,8 +48,13 @@ function App() {
     const updatedAnimals = animals.map(animal => {
       if (animal.id === animalId) {
         // return {...animal, isBookmarked: bookmarkBoolean};
-        animal.isBookmarked = !animal.isBookmarked;
-        return {...animal}
+        // animal.isBookmarked = !animal.isBookmarked;
+        // copy the original animal object and update it
+        let animal2 = {...animal};
+        animal2.isBookmarked = !animal.isBookmarked;
+        return animal2
+        // this is the same code 
+        // return {...animal, isBookmarked: !animal.isBookmarked}
       } else {
         return {...animal}
       }
