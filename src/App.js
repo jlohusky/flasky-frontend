@@ -10,7 +10,6 @@ function App() {
   useEffect( () => {
     axios.get('http://127.0.0.1:5000/animals')
     .then( (response) => {
-      console.log('response data', response.data);
       const initialAnimalData = [];
       response.data.forEach(animal => {
         initialAnimalData.push(animal);
