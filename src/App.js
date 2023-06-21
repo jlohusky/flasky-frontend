@@ -7,15 +7,12 @@ import AnimalList from './components/AnimalList';
 function App() {
   const [animals, setAnimals] = useState([]);
 
-  // On initialization of this component, call our backend to 
-  // set the value of animals on state
   useEffect( () => {
     axios.get('http://127.0.0.1:5000/animals')
     .then( (response) => {
       console.log('response data', response.data);
       const initialAnimalData = [];
       response.data.forEach(animal => {
-        console.log(animal)
         initialAnimalData.push(animal);
       })
       
