@@ -36,18 +36,22 @@ function App() {
   }
 
   const updateDelete = (animalId) => {
-    const updatedAnimals = animals.map(animal => {
-      if (animal.id !== animalId) {
-        return {...animal}
-      } 
-    });
-    // replacing animal with an undefined
-
-    const filteredUpdatedData = updatedAnimals.filter(function (element) {
-      return element !== undefined;
-    });
-
-    setAnimals(filteredUpdatedData);
+    axios.delete(`http://127.0.0.1:5000/animals/${animalId}`)
+      .then( (response) => {
+        const updatedAnimals = animals.map((animal) => {
+          if (animal.id !== animalId) {
+            return {...animal}
+          } 
+        });
+        const filteredUpdatedData = updatedAnimals.filter(function (element) {
+          return element !== undefined;
+        });
+        
+        setAnimals(filteredUpdatedData);
+      })
+      .catch( (error) => {
+        console.log('could not delete animal', error, error.response)
+      });
   }
 
   return (
