@@ -21,6 +21,7 @@ const Animal = (props) => {
 
     return (
         <section className={animalStyle}>
+            <div className='ribbon'></div>
             <h3>Animal name: {props.name}</h3>
             <p> Species: {props.species ? props.species : 'Unknown'}</p>
             { props.photo ? <img src={ props.photo } alt={altText}></img> : "[No Photo]" }
